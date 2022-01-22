@@ -1,0 +1,54 @@
+body {
+  padding-top: 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2em;
+}
+
+#container {
+  --spacing: 0.5em;
+
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: var(--spacing);
+  padding: var(--spacing);
+  background-color: lightsalmon;
+}
+
+#container.mistake {
+  background-color: tomato;
+}
+
+.color {
+  width: 100px;
+  height: 100px;
+  background-color: hsl(200, 100%, 90%);
+  border: none;
+  cursor: pointer;
+}
+
+.color:disabled {
+  cursor: not-allowed;
+}
+
+.color:hover:not(:disabled) {
+  background-color: hsl(200, 100%, 80%);
+}
+
+.color.active,
+.color:active:not(:disabled) {
+  background-color: hsl(200, 100%, 60%);
+}
+
+#controls #level-text {
+  display: none;
+}
+
+#controls.playing #level-text {
+  display: initial;
+}
+#controls.playing #play {
+  display: none;
+}
