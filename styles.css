@@ -1,3 +1,10 @@
+:root {
+  --green: hsl(120, 100%, 75%);
+  --red: hsl(0, 100%, 75%);
+  --yellow: hsl(60, 100%, 75%);
+  --blue: hsl(230, 100%, 75%);
+}
+
 body {
   padding-top: 4em;
   display: flex;
@@ -8,13 +15,16 @@ body {
 }
 
 #container {
-  --spacing: 0.5em;
+  --spacing: 1em;
 
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: var(--spacing);
   padding: var(--spacing);
-  background-color: lightsalmon;
+  background-color: #333333;
+  border-radius: 50%;
+  width: 70%;
+  max-width: 700px;
 }
 
 #container.mistake {
@@ -22,11 +32,14 @@ body {
 }
 
 .color {
-  width: 100px;
-  height: 100px;
-  background-color: hsl(200, 100%, 90%);
   border: none;
   cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+}
+
+.color svg {
+  width: 100%;
 }
 
 .color:disabled {
@@ -40,6 +53,25 @@ body {
 .color.active,
 .color:active:not(:disabled) {
   background-color: hsl(200, 100%, 60%);
+}
+
+.color#green svg {
+  fill: var(--green);
+  transform: rotate(-90deg);
+}
+
+.color#red svg {
+  fill: var(--red);
+}
+
+.color#yellow svg {
+  fill: var(--yellow);
+  transform: rotate(180deg);
+}
+
+.color#blue svg {
+  fill: var(--blue);
+  transform: rotate(90deg);
 }
 
 #controls #level-text {
