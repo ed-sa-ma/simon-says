@@ -32,8 +32,8 @@ function prepareGame() {
 }
 
 function finishGame() {
-  levelElement.textContent = 0;
-  sequence = [];
+  levelElement.textContent = 1;
+  sequence = [COLORS[Math.floor(Math.random() * 4)]];
 
   setButtonsDisabled(true);
 
@@ -47,7 +47,7 @@ async function showSequence() {
   for (let color of sequence) {
     await new Promise((resolve) => {
       setTimeout(() => {
-        const button = document.getElementById(color);
+        const button = document.querySelector(`button.${color}`);
         button.classList.add("active");
 
         setTimeout(() => {
@@ -66,8 +66,8 @@ async function listenForClicks() {
     const _sequence = [...sequence];
 
     function handleClick(e) {
+      console.log({ e });
       const clickedColor = e.target.getAttribute("id");
-      console.log(`clickedColor: ${clickedColor}`);
 
       if (_sequence.at(0) === clickedColor) {
         _sequence.shift();
@@ -77,7 +77,7 @@ async function listenForClicks() {
           containerElement.removeEventListener("click", handleClick);
           resolve();
         }
-      } else if (e.target.classList.contains("color")) {
+      } else if (e.target.tagName === "rect") {
         // We clicked a button, but not the right one.
         containerElement.removeEventListener("click", handleClick);
         reject(MISTAKE);
@@ -109,7 +109,7 @@ async function play() {
     }
   }
 
-  resetGame();
+  finishGame();
   return;
 }
 
