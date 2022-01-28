@@ -3,15 +3,6 @@
   --red: hsl(0, 100%, 75%);
   --yellow: hsl(60, 100%, 75%);
   --blue: hsl(230, 100%, 75%);
-  /*! Try brightness filter instead of defining other colors */
-  --hover-green: hsl(120, 100%, 60%);
-  --hover-red: hsl(0, 100%, 60%);
-  --hover-yellow: hsl(60, 100%, 60%);
-  --hover-blue: hsl(230, 100%, 60%);
-  --active-green: hsl(120, 100%, 40%);
-  --active-red: hsl(0, 100%, 40%);
-  --active-yellow: hsl(60, 100%, 40%);
-  --active-blue: hsl(230, 100%, 40%);
 }
 
 body {
@@ -69,18 +60,18 @@ body {
   cursor: not-allowed;
 }
 
+.color:not(:disabled) svg .fill:hover {
+  filter: brightness(0.9);
+}
+
+.color.active svg .fill,
+.color:not(:disabled) svg .fill:active {
+  filter: saturate(1.2) brightness(1.2);
+}
+
 .color.green svg .fill {
   fill: var(--green);
   clip-path: url(#green-path);
-}
-
-.color.green:not(:disabled) svg .fill:hover {
-  fill: var(--hover-green);
-}
-
-.color.green.active svg .fill,
-.color.green:not(:disabled) svg .fill:active {
-  fill: var(--active-green);
 }
 
 .color.red svg .clip-path {
@@ -92,15 +83,6 @@ body {
   clip-path: url(#red-path);
 }
 
-.color.red:not(:disabled) svg .fill:hover {
-  fill: var(--hover-red);
-}
-
-.color.red.active svg .fill,
-.color.red:not(:disabled) svg .fill:active {
-  fill: var(--active-red);
-}
-
 .color.yellow svg .clip-path {
   transform: rotate(-90deg);
 }
@@ -110,15 +92,6 @@ body {
   clip-path: url(#yellow-path);
 }
 
-.color.yellow:not(:disabled) svg .fill:hover {
-  fill: var(--hover-yellow);
-}
-
-.color.yellow.active svg .fill,
-.color.yellow:not(:disabled) svg .fill:active {
-  fill: var(--active-yellow);
-}
-
 .color.blue svg .clip-path {
   transform: rotate(180deg);
 }
@@ -126,15 +99,6 @@ body {
 .color.blue svg .fill {
   fill: var(--blue);
   clip-path: url(#blue-path);
-}
-
-.color.blue:not(:disabled) svg .fill:hover {
-  fill: var(--hover-blue);
-}
-
-.color.blue.active svg .fill,
-.color.blue:not(:disabled) svg .fill:active {
-  fill: var(--active-blue);
 }
 
 #controls #level-text {
