@@ -1,7 +1,7 @@
 :root {
-  --green: hsl(120, 100%, 75%);
-  --red: hsl(0, 100%, 75%);
-  --yellow: hsl(60, 100%, 75%);
+  --green: hsl(120, 100%, 60%);
+  --red: hsl(0, 94%, 65%);
+  --yellow: hsl(60, 100%, 60%);
   --blue: hsl(230, 100%, 75%);
 }
 
@@ -39,6 +39,7 @@ body {
 }
 
 .color {
+  position: relative;
   border: none;
   padding: 0;
   background-color: transparent;
@@ -46,6 +47,7 @@ body {
 
 .color svg {
   width: 100%;
+  position: relative;
 }
 
 .color svg .clip-path {
@@ -56,22 +58,44 @@ body {
   cursor: pointer;
 }
 
+.color svg.shadow {
+  --padding: 5px;
+
+  position: absolute;
+  top: calc(var(--padding) * -1);
+  left: calc(var(--padding) * -1);
+  width: calc(100% + calc(var(--padding) * 2));
+  height: calc(100% + calc(var(--padding) * 2));
+
+  display: none;
+  filter: blur(var(--padding));
+}
+
 .color:disabled svg .fill {
   cursor: not-allowed;
 }
 
-.color:not(:disabled) svg .fill:hover {
+.color:not(:disabled):not(:active):not(.active) svg .fill:hover {
   filter: brightness(0.9);
 }
 
 .color.active svg .fill,
-.color:not(:disabled) svg .fill:active {
-  filter: saturate(1.2) brightness(1.2);
+.color:not(:disabled):active svg .fill {
+  filter: saturate(10) brightness(1.2);
+}
+
+.color.active svg.shadow,
+.color:not(:disabled):active svg.shadow {
+  display: initial;
 }
 
 .color.green svg .fill {
   fill: var(--green);
   clip-path: url(#green-path);
+}
+
+.color.green svg.shadow .fill {
+  clip-path: url(#green-path-shadow);
 }
 
 .color.red svg .clip-path {
@@ -83,6 +107,10 @@ body {
   clip-path: url(#red-path);
 }
 
+.color.red svg.shadow .fill {
+  clip-path: url(#red-path-shadow);
+}
+
 .color.yellow svg .clip-path {
   transform: rotate(-90deg);
 }
@@ -92,6 +120,10 @@ body {
   clip-path: url(#yellow-path);
 }
 
+.color.yellow svg.shadow .fill {
+  clip-path: url(#yellow-path-shadow);
+}
+
 .color.blue svg .clip-path {
   transform: rotate(180deg);
 }
@@ -99,6 +131,10 @@ body {
 .color.blue svg .fill {
   fill: var(--blue);
   clip-path: url(#blue-path);
+}
+
+.color.blue svg.shadow .fill {
+  clip-path: url(#blue-path-shadow);
 }
 
 #controls #level-text {
