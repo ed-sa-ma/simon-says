@@ -1,17 +1,23 @@
+@import "./font/font-face.css";
+
 :root {
   --green: hsl(120, 100%, 60%);
   --red: hsl(0, 94%, 65%);
   --yellow: hsl(60, 100%, 60%);
-  --blue: hsl(230, 100%, 75%);
+  --blue: #8095ff;
 }
 
 body {
+  font-family: "Mali", cursive;
   padding-top: 4em;
-  display: flex;
   flex-direction: column;
   align-items: center;
-
+  display: flex;
   gap: 2em;
+}
+
+h1 {
+  font-size: 3em;
 }
 
 button {
@@ -46,7 +52,6 @@ button {
 
 .color {
   position: relative;
-  border: none;
   padding: 0;
   background-color: transparent;
 }
