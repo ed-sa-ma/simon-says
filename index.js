@@ -66,7 +66,6 @@ async function listenForClicks() {
     const _sequence = [...sequence];
 
     function handleClick(e) {
-      console.log({ e });
       const clickedColor = e.target.getAttribute("id");
 
       if (_sequence.at(0) === clickedColor) {
