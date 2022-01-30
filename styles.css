@@ -14,6 +14,12 @@ body {
   gap: 2em;
 }
 
+button {
+  font-family: inherit;
+  font-size: 2em;
+  border: none;
+}
+
 #container {
   --spacing: 1em;
 
@@ -139,6 +145,38 @@ body {
 
 #controls #level-text {
   display: none;
+}
+
+#controls #play {
+  border: 8px #333 solid;
+
+  /* Orange */
+  /* background-color: hsl(28deg 100% 54%); */
+
+  /* Pink */
+  /* background-color:hsl(313deg 89% 79%) */
+
+  background-image: linear-gradient(
+    90deg,
+    hsl(120deg 100% 60%) 0%,
+    hsl(76deg 100% 44%) 10%,
+    hsl(53deg 100% 42%) 20%,
+    hsl(37deg 100% 48%) 30%,
+    hsl(21deg 100% 58%) 40%,
+    hsl(0deg 94% 65%) 50%,
+    hsl(343deg 100% 65%) 60%,
+    hsl(329deg 88% 65%) 70%,
+    hsl(306deg 61% 64%) 80%,
+    hsl(268deg 75% 72%) 90%,
+    hsl(230deg 100% 75%) 100%
+  );
+  text-shadow: 0 0 10px black;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.5em 2em;
+  border-radius: 0.4em;
+  cursor: pointer;
 }
 
 #controls.playing #level-text {
