@@ -7,8 +7,29 @@ const playButtonElement = document.getElementById("play");
 const controlsElement = document.getElementById("controls");
 const levelElement = document.getElementById("level");
 const containerElement = document.getElementById("container");
+const titleElement = document.getElementById("title");
 
 let sequence = [COLORS[Math.floor(Math.random() * 4)]];
+
+function colorTitle() {
+  const TITLE_COLORS = [...COLORS, "orange"];
+  let titleText = titleElement.textContent;
+  let titleLetters = titleText.split("");
+  titleElement.innerHTML = "";
+
+  let i = 0;
+
+  for (let letter of titleLetters) {
+    let color = TITLE_COLORS[i];
+
+    let span = document.createElement("span");
+    span.setAttribute("class", color);
+    span.textContent = letter;
+    titleElement.appendChild(span);
+
+    i = (i + 1) % TITLE_COLORS.length;
+  }
+}
 
 function setButtonsDisabled(value) {
   for (let button of document.getElementsByClassName("color")) {
@@ -112,4 +133,5 @@ async function play() {
   return;
 }
 
+colorTitle();
 playButtonElement.addEventListener("click", play);
